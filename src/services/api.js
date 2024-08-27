@@ -43,17 +43,17 @@ export const fetchVideos = async (type, id) => {
 
 // DISCOVER
 
-export const fetchMovies = async (page, sortBy) => {
+export const fetchMovies = async (page, sortBy, genre) => {
   const res = await axios.get(
-    `${baseUrl}/discover/movie?api_key=${apiKey}&page=${page}&sort_by=${sortBy}`
+    `${baseUrl}/discover/movie?api_key=${apiKey}&page=${page}&sort_by=${sortBy}&with_genres=${genre}`
   );
 
   return res?.data;
 };
 
-export const fetchTvSeries = async (page, sortBy) => {
+export const fetchTvSeries = async (page, sortBy, genre) => {
   const res = await axios.get(
-    `${baseUrl}/discover/tv?api_key=${apiKey}&page=${page}&sort_by=${sortBy}`
+    `${baseUrl}/discover/tv?api_key=${apiKey}&page=${page}&sort_by=${sortBy}&with_genres=${genre}`
   );
 
   return res?.data;
@@ -67,4 +67,11 @@ export const searchData = async (query, page) => {
   );
 
   return res?.data
+};
+
+// GENRES
+
+export const fetchGenres = async (type) => {
+  const res = await axios.get(`${baseUrl}/genre/${type}/list?api_key=${apiKey}`);
+  return res?.data?.genres;
 };
