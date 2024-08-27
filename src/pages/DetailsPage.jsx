@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import {
   Badge,
   Box,
-  Button,
   CircularProgress,
   CircularProgressLabel,
   Container,
@@ -13,7 +12,6 @@ import {
   Image,
   Spinner,
   Text,
-  useToast,
 } from "@chakra-ui/react";
 import {
   fetchCredits,
@@ -24,8 +22,6 @@ import {
 } from "../services/api";
 import {
   CalendarIcon,
-  CheckCircleIcon,
-  SmallAddIcon,
   TimeIcon,
 } from "@chakra-ui/icons";
 import {
@@ -40,14 +36,12 @@ const DetailsPage = () => {
   const router = useParams();
   const { type, id } = router;
 
-  const toast = useToast();
 
   const [details, setDetails] = useState({});
   const [cast, setCast] = useState([]);
   const [video, setVideo] = useState(null);
   const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [isInWatchlist, setIsInWatchlist] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
